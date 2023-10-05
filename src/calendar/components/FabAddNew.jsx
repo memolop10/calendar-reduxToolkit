@@ -11,7 +11,7 @@ export const FabAddNew = () => {
     setActiveEvent({
         title: '',
         notes:'',
-        start: Date.now(),
+        start: new Date(),
         end: addHours( new Date(), 2),
         bgColor: '#fafafa',
         user:{

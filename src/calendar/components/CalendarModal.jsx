@@ -9,6 +9,21 @@ import 'sweetalert2/dist/sweetalert2.min.css'
 import { useCalendarStore, useUiStore } from '../../hooks';
 
 registerLocale('es', es)
+
+
+
+const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
+
+
 Modal.setAppElement('#root');
 
 
@@ -19,8 +34,8 @@ export const CalendarModal = () => {
 
     const [formSubmitted, setFormSubmitted] = useState(false)
     const [formValues, setFormValues] = useState({
-        title:'Memo',
-        notes:'comprar algo',
+        title:'',
+        notes:'',
         start: new Date(),
         end: addHours(new Date(), 2)
     })
@@ -56,7 +71,6 @@ export const CalendarModal = () => {
     }
 
     const onCloseModal = () => {
-        console.log('cerrando modal')
         closeDateModal()
     }
 
@@ -82,16 +96,6 @@ export const CalendarModal = () => {
     }
 
     
-    const customStyles = {
-        content: {
-          top: '50%',
-          left: '50%',
-          right: 'auto',
-          bottom: 'auto',
-          marginRight: '-50%',
-          transform: 'translate(-50%, -50%)',
-        },
-      };
   return (
     <Modal
         isOpen={isDateModalOpen}

@@ -5,7 +5,7 @@ const tempEvent = [{
         _id: new Date().getTime(),
         title: 'Cumpleaños del jefe',
         notes:'Comprar pastel',
-        start: Date.now(),
+        start: new Date(),
         end: addHours( new Date(), 2),
         bgColor: '#fafafa',
         user:{
@@ -38,7 +38,13 @@ reducers: {
 
         return event
     })
+   },
+   onDeleteEvent:(state) => {
+    if( state.activeEvent ){
+        state.events = state.events.filter( event => event._id !== state.activeEvent._id );
+        state.activeEvent = null
+    }
    }
 }
 });
-export const { onSetActiveEvent, onAddNewEvent, onUpdateEvent } = calendarSlice.actions;
+export const { onSetActiveEvent, onAddNewEvent, onUpdateEvent, onDeleteEvent } = calendarSlice.actions;
